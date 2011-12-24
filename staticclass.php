@@ -1,1 +1,1 @@
-Enter your PHP code 
+<?php class foo{static $foo=self call; }foo::$foo  ?>
