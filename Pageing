@@ -1,0 +1,75 @@
+(function($) { 
+  Drupal.behaviors.custom = { 
+    attach: function(context, settings) {
+      $('ul.pager li a').click(search_result_pager);
+    }
+  }
+// Filter Results Paginations
+function search_result_pager() {   
+thisLink = $(this);
+thisUrl = this.href;
+target = $("#content");
+$.ajax({
+url: thisUrl,
+type: "GET",
+success: function(data) { 
+var content = $(data).find( "#content" );
+$('#content').html(content);
+$('#footer-wrapper').before('<p id="back-top"><a href=""><span>Go To Top</span></a></p>');
+    // fade in #back-top
+                $(function () {
+                    $(window).scroll(function () {
+                        if ($(this).scrollTop()> 500) {
+                            $('#back-top').fadeIn();
+                        } else {
+                            $('#back-top').fadeOut();
+                        }
+                    });
+
+                    // scroll body to 0px on click
+                    $('#back-top a').click(function () {
+                        $('body,html').animate({
+                            scrollTop: 0
+                        }, 800);
+                        return false;
+                    });
+                });
+Drupal.attachBehaviors("#content");
+}
+});
+return false;
+}
+})(jQuery);
+ +
+
+////jQuery(document).ready(function() {
+//   
+///* 
+//   
+//jQuery('#working').change(function(){
+//   
+//var temp=jQuery('#working').val(); 
+//   
+//var str = "";
+//jQuery("select option:selected").each(function () {
+//str += jQuery(this).val() + " ";
+//});
+// });
+//*/
+//
+//jQuery("#edit-title").blur(function(){
+//
+//var tr= jQuery("#edit-title").val();
+//
+//jQuery.get('abc', {data:tr},
+//	  function(data){
+//		jQuery("#tester45").html(data);
+//	  });
+//
+//
+//});
+//
+//
+//});
+
+
