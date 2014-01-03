@@ -1,0 +1,14 @@
+ $('.tip').bt({
+          fill: '#F7F7F7',
+          strokeStyle: '#B7B7B7',
+          spikeLength: 10,
+          spikeGirth: 10,
+          padding: 8,
+          cornerRadius: 0,
+          cssStyles: {
+            fontFamily: '"lucida grande",tahoma,verdana,arial,sans-serif',
+            fontSize: '11px',
+            width: '500px'
+          }
+        });
+        return $(this);
